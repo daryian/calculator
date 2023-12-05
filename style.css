@@ -1,0 +1,85 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: 100vh;
+}
+#calc-body {
+    display: flex;
+    background-color: #1d1d1d;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
+    height: fit-content;
+    width: fit-content;
+    padding: 20px;
+    border-radius: 12.5%;
+}
+#display-container {
+    display: flex;
+    color: white;
+    margin: 10px 20px;
+    padding: 0px;
+    font-size: 60px;
+    text-justify: center;
+    flex-direction: row;
+    width: 400px;
+}
+
+#button-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 600px;
+    width: 375px;
+}
+
+#num-pad-dgray {
+    border-radius: 100%;
+    border: none;
+    height: 70px;
+    width: 70px;
+    margin: 6px;
+    background-color: #505050;
+}
+
+#num-pad-lgray {
+    border-radius: 100%;
+    border: none;
+    height: 70px;
+    width: 70px;
+    margin: 6px;
+    background-color: #d4d4d2;
+}
+
+#num-pad-orange {
+    border-radius: 100%;
+    border: none;
+    height: 70px;
+    width: 70px;
+    margin: 6px;
+    background-color: #FF9500;
+}
+.zero {
+    border-radius: 35px;
+    width: 160px;
+    height: 70px;
+    border: none;
+    margin: 10px;
+    background-color: #505050;
+}
+
+#num-pad-orange:hover, #num-pad-lgray:hover, #num-pad-dgray:hover, .zero:hover {
+    background-color: aqua;
+}
+
+#num-pad-orange, #num-pad-dgray, #num-pad-lgray, #big-oh { 
+    font-size: 26px;
+    font-weight: bolder;
+}
+
+#num-pad-orange, #num-pad-dgray, #big-oh {
+    color:white;
+}
