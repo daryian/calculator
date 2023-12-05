@@ -39,8 +39,8 @@ body {
 #num-pad-dgray {
     border-radius: 100%;
     border: none;
-    height: 70px;
-    width: 70px;
+    height: 80px;
+    width: 80px;
     margin: 6px;
     background-color: #505050;
 }
@@ -48,8 +48,8 @@ body {
 #num-pad-lgray {
     border-radius: 100%;
     border: none;
-    height: 70px;
-    width: 70px;
+    height: 80px;
+    width: 80px;
     margin: 6px;
     background-color: #d4d4d2;
 }
@@ -57,15 +57,15 @@ body {
 #num-pad-orange {
     border-radius: 100%;
     border: none;
-    height: 70px;
-    width: 70px;
+    height: 80px;
+    width: 80px;
     margin: 6px;
     background-color: #FF9500;
 }
 .zero {
-    border-radius: 35px;
+    border-radius: 40px;
     width: 160px;
-    height: 70px;
+    height: 80px;
     border: none;
     margin: 10px;
     background-color: #505050;
