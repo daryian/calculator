@@ -1,3 +1,14 @@
+numOne = '';
+numTwo = '';
+
+const numInput = document.querySelectorAll(".number");
+
+    numInput.forEach((".button") => {
+        numInput.addEventListener("click", () => {
+            document.querySelector("display-container").innerText = 12;
+        });
+});
+
 function add(numOne, numTwo){
     let result = numOne + numTwo;
     return result;
