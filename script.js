@@ -1,14 +1,42 @@
 numOne = '';
 numTwo = '';
 
+const displayContainer = document.querySelector("#display-container");
 const numInput = document.querySelectorAll(".number");
 
-    numInput.forEach((".button") => {
-        numInput.addEventListener("click", () => {
-            document.querySelector("display-container").innerText = 12;
-        });
-});
+assignNum();
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function assignNum(){
+    for(let i = 0; i < numInput.length; i++) {
+        numInput[i].addEventListener("click", () => {
+            const buttonValue = numInput[i].innerText;
+
+            if(displayContainer.innerText != 0) {
+                displayContainer.innerText +=buttonValue;
+            }
+            else{
+                displayContainer.innerText = buttonValue;
+            }
+        });
+    }
+}
 function add(numOne, numTwo){
     let result = numOne + numTwo;
     return result;
