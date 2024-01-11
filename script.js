@@ -1,32 +1,37 @@
-numOne = '';
-numTwo = '';
-
+let numOne = '';
+let numTwo = '';
+let buttonValue = 0;
 const displayContainer = document.querySelector("#display-container");
 const numInput = document.querySelectorAll(".number");
-
-assignNum();
-
-
-
+const clearButton = document.querySelector("#clear");
+const operatorInput = document.querySelectorAll(".operator");
+runCalc();
 
 
 
 
 
+function runCalc() {
+    assignNum();
+    clearAll();
+    assignOperators();
+}
 
+function clearAll() {
+    clearButton.addEventListener("click", () =>  {
+        displayContainer.innerText = 0;
+        buttonValue = 0;
+    })
+}
 
+function assignOperators() {
+    
+}
 
-
-
-
-
-
-
-
-function assignNum(){
+function assignNum() {
     for(let i = 0; i < numInput.length; i++) {
         numInput[i].addEventListener("click", () => {
-            const buttonValue = numInput[i].innerText;
+            buttonValue = numInput[i].innerText;
 
             if(displayContainer.innerText != 0) {
                 displayContainer.innerText +=buttonValue;
