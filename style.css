@@ -25,6 +25,7 @@ body {
     text-justify: center;
     flex-direction: row;
     width: 400px;
+    min-height: 70px;
 }
 
 #button-container {

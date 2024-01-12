@@ -1,3 +1,4 @@
+let isNewNumber = false;
 let numOne = '';
 let numTwo = '';
 let buttonValue = 0;
@@ -10,32 +11,34 @@ const operatorInput = document.querySelectorAll(".operator");
 runCalc();
 
 
-
-
-
 function getNums(){
-    if(opValue != '') {
-        if(numOne === '') {
-            numOne = displayContainer.innerText;
-            operator = opValue;
-            opValue = '';
-            displayContainer.innerText = 0; 
-            console.log("number one =", numOne);
+    if(opValue != '') { //if we have an operator
+        if(numOne === '') { //if numOne variable is blank
+            numOne = displayContainer.innerText; //numOne equals current display number
+            operator = opValue; //operator set to opvalue
+            opValue = ''; //opvalue wiped
+            displayContainer.innerText = ''; //display container wiped
         }
-        else {
-            numTwo = displayContainer.innerText;
-            console.log("number two =", numTwo);
-            Number(numOne, numTwo);
-            console.log(numOne, operator, numTwo)
-            numOne = operate(numOne, operator,numTwo);
-            displayContainer.innerText = numOne;
-            numTwo = '';
+        else { //if there is operator and numOne is full
+            numTwo = displayContainer.innerText; //numTwo is current displayed number
+            Number(numOne, numTwo); //convert strings to numbers
+            if(opValue === '=') { //if operator is equal sign
+                numOne = operate(numOne, operator,numTwo); //operate, numOne is now the result of operation
+                displayContainer.innerText = numOne; //display container is set to the result number
+                opValue = '';
+                numTwo = ''; //reset numTwo so we can repeat process
+            }
+            else { //if operator is NOT the equal sign
+                numOne = operate(numOne, operator, numTwo); //feed the operator into operate equation and numOne is the result
+                displayContainer.innerText = ''; //change the display to reflect
+                operator = opValue; //set operator
+                opValue = ''; //wipe opValue
+                numTwo = ''; //reset so we can repeat
+            }
         }
-        
-
-
+    }
 }
-}
+
 function assignButtons() {
     for(let i = 0; i < numInput.length; i++) {
         numInput[i].addEventListener("click", () => {
@@ -53,7 +56,6 @@ function assignButtons() {
     for(let i = 0; i < operatorInput.length; i++) {
         operatorInput[i].addEventListener("click", () => {
         opValue = operatorInput[i].textContent;
-        console.log(opValue); 
         getNums();
         });
     }
@@ -101,9 +103,16 @@ function clearAll() {
     clearButton.addEventListener("click", () =>  {
         displayContainer.innerText = 0;
         buttonValue = 0;
+        numOne = '';
+        numTwo = '';
         opValue = '';
-    })
-}function runCalc() {
+        isNewNumber = false;
+    });
+}
+
+function runCalc() {
     clearAll();
     assignButtons();
 }
+
+//End of night log, calculations working somewhat properly. Running into issue once we hit equal sign. Numtwo sets itself as the display, which is equal to numOne. Calling it a night
