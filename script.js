@@ -1,39 +1,40 @@
-let isNewNumber = false;
 let numOne = '';
 let numTwo = '';
 let buttonValue = 0;
 let opValue = '';
 let operator = '';
+let isNewNum = false;
 let displayContainer = document.querySelector("#display-container");
 const numInput = document.querySelectorAll(".number");
 const clearButton = document.querySelector("#clear");
 const operatorInput = document.querySelectorAll(".operator");
 runCalc();
 
-
 function getNums(){
-    if(opValue != '') { //if we have an operator
-        if(numOne === '') { //if numOne variable is blank
-            numOne = displayContainer.innerText; //numOne equals current display number
-            operator = opValue; //operator set to opvalue
-            opValue = ''; //opvalue wiped
-            displayContainer.innerText = ''; //display container wiped
+    if(opValue != '') { 
+        if(numOne === '') { 
+            numOne = displayContainer.innerText; 
+            operator = opValue; 
+            opValue = ''; 
+            isNewNum = true;
         }
-        else { //if there is operator and numOne is full
-            numTwo = displayContainer.innerText; //numTwo is current displayed number
-            Number(numOne, numTwo); //convert strings to numbers
-            if(opValue === '=') { //if operator is equal sign
-                numOne = operate(numOne, operator,numTwo); //operate, numOne is now the result of operation
-                displayContainer.innerText = numOne; //display container is set to the result number
+        else { 
+            numTwo = displayContainer.innerText; 
+            if(opValue === '=') { 
+                numOne = operate(numOne, operator,numTwo); 
+                displayContainer.innerText = numOne; 
                 opValue = '';
-                numTwo = ''; //reset numTwo so we can repeat process
+                numOne = '';
+                numTwo = ''; 
+                isNewNum = true;
             }
-            else { //if operator is NOT the equal sign
-                numOne = operate(numOne, operator, numTwo); //feed the operator into operate equation and numOne is the result
-                displayContainer.innerText = ''; //change the display to reflect
-                operator = opValue; //set operator
-                opValue = ''; //wipe opValue
-                numTwo = ''; //reset so we can repeat
+            else { 
+                numOne = operate(numOne, operator, numTwo); 
+                displayContainer.innerText = numOne; 
+                operator = opValue; 
+                opValue = ''; 
+                numTwo = ''; 
+                isNewNum = true;
             }
         }
     }
@@ -45,9 +46,13 @@ function assignButtons() {
             buttonValue = numInput[i].innerText;
 
             if(displayContainer.innerText != 0) {
+                if(isNewNum === true) {
+                    displayContainer.innerText = '';
+                }
                 displayContainer.innerText += buttonValue;
+                isNewNum = false;
             }
-            else{
+            else {
                 displayContainer.innerText = buttonValue;
             }
         });
@@ -59,26 +64,26 @@ function assignButtons() {
         getNums();
         });
     }
-    
 }
+
 function add(numOne, numTwo){
     let result = parseFloat(numOne) + parseFloat(numTwo);
-    return result;
+    return Math.round(result * 10000) / 10000;
 }
 
 function subtract(numOne, numTwo){
     let result = parseFloat(numOne) - parseFloat(numTwo);
-    return result;
+    return Math.round(result * 10000) / 10000;
 }
 
 function multiply(numOne, numTwo){
     let result =parseFloat(numOne) * parseFloat(numTwo);
-    return result;
+    return Math.round(result * 10000) / 10000;
 }
 
 function divide(numOne, numTwo){
     let result = parseFloat(numOne) / parseFloat(numTwo);
-    return result;
+    return Math.round(result * 10000) / 10000;
 }
 
 function operate(numOne, operator, numTwo){
@@ -92,7 +97,7 @@ function operate(numOne, operator, numTwo){
             return result;
         case '*':
             result = multiply(numOne, numTwo);
-            return result;
+            return result; 
         case '/':
             result = divide(numOne,numTwo);
             return result;
@@ -106,7 +111,7 @@ function clearAll() {
         numOne = '';
         numTwo = '';
         opValue = '';
-        isNewNumber = false;
+        isNewNum = false;
     });
 }
 
@@ -114,5 +119,3 @@ function runCalc() {
     clearAll();
     assignButtons();
 }
-
-//End of night log, calculations working somewhat properly. Running into issue once we hit equal sign. Numtwo sets itself as the display, which is equal to numOne. Calling it a night
