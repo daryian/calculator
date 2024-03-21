@@ -114,3 +114,8 @@ function clearAll() {
         isNewNum = false;
     });
 }
+
+function runCalc() {
+    clearAll();
+    assignButtons();
+}
