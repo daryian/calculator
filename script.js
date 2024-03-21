@@ -119,3 +119,11 @@ function runCalc() {
     clearAll();
     assignButtons();
 }
+
+/*To-Do List
+-Expand on functions. Current functions are too complicated and if we 
+break them into simpler tasks it allows for easier readability.
+- When '=' is pressed multiple times it causes an 'undefined' issue
+- If operate function is ran and then you input a number immediately after
+without picking an operator, it will overwrite the current result.
+This can probably be fixed by using a different variable than NumOne to store result. */
