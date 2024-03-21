@@ -114,17 +114,3 @@ function clearAll() {
         isNewNum = false;
     });
 }
-
-function runCalc() {
-    clearAll();
-    assignButtons();
-}
-
-/*Things to fix:
-- Can break functions into smaller functions. After talking to Joe, 
-it would be better to break functions into smaller tasks.
-- Pressing '=' multiple times causes an undefined issue
-- Dividing by zero causes an infinity issue
-- After '=' has been pressed, if you don't define another operator, 
-it will overwrite the current number. Need to crosscheck this against
-other calculators and see how it should function. */
